@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Edit Remove HTML Table Row</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            
+            .container{overflow: hidden}
+            .tab{float: left;}
+            .tab-2{margin-left: 50px}
+            .tab-2 input{display: block;margin-bottom: 10px}
+            tr{transition:all .25s ease-in-out}
+            tr:hover{background-color:#EEE;cursor: pointer}
+            
+        </style>
+        
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="tab tab-1">
+                <table id="table" border="1">
+                    <tr>
+                        <th>Language</th>
+
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                    </tr>
+                    <tr>
+                        <td>PHP</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td>Python</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab tab-2">
+                Language :<input type="text" name="Language" id="language">   
+                <button onclick="addHtmlTableRow();">Add</button>
+                <button onclick="editHtmlTbleSelectedRow();">Edit</button>
+                <button onclick="removeSelectedRow();">Remove</button>
+            </div>
+        </div>
+        
+        <script>
+            
+            var rIndex,
+                table = document.getElementById("table");
+
+            function checkEmptyInput()
+            {
+                var isEmpty = false,
+                    language = document.getElementById("language").value;
+            
+                if(language === ""){
+                    alert("Connot Be Empty");
+                    isEmpty = true;
+                }
+                return isEmpty;
+            }
+            
+            function addHtmlTableRow()
+            {
+ 
+                if(!checkEmptyInput()){
+                var newRow = table.insertRow(table.length),
+                    cell1 = newRow.insertCell(0);
+
+                    language = document.getElementById("language").value;
+            
+                cell1.innerHTML = language;
+
+                selectedRowToInput();
+            }
+            }
+            
+            function selectedRowToInput()
+            {
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                      rIndex = this.rowIndex;
+                      document.getElementById("language").value = this.cells[0].innerHTML;
+                    };
+                }
+            }
+            selectedRowToInput();
+            
+            function editHtmlTbleSelectedRow()
+            {
+                var language = document.getElementById("language").value;
+               if(!checkEmptyInput()){
+                table.rows[rIndex].cells[0].innerHTML = language;
+              }
+            }
+            
+            function removeSelectedRow()
+            {
+                table.deleteRow(rIndex);
+                document.getElementById("language").value = "";
+            }
+        </script>
+        
+    </body>
+</html>

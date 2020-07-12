@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Html CRUD with JAVASRIPT
+	</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<table>
+		<tr>
+			<td>
+				
+				<form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+					<div>
+						<label> Enter Programming Languages</label>
+						<input type="text" name="languages" id="languages">
+					</div>
+					<div class="form-action-buttons">
+						<input type="submit" value="Submit">
+					</div>
+
+				</form>
+					
+			</td>
+			<td>
+				<table class="list" id="languagelist">
+					<thead>
+						<tr>
+							<th>
+								Programming Languages
+							</th>
+							<th>
+								
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+					</tbody>
+				</table>
+			</td>
+				
+		</tr>
+	</table>
+	<script src="script1.js"></script>
+
+</body>
+</html>
